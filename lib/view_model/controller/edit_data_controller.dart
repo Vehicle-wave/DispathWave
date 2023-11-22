@@ -9,7 +9,7 @@ class EditDataController extends GetxController{
   final dropAddress=TextEditingController();
   final pickupContact=TextEditingController();
   final dropContact=TextEditingController();
-  final time=TextEditingController();
+  RxString time=''.obs;
 
   RxBool loading=false.obs;
 
@@ -34,7 +34,8 @@ class EditDataController extends GetxController{
         return;
       }
     }
-    if(pickupContact.value.text.toString().isEmpty){
+
+    if(time.isEmpty){
       Utils.showSnackBar('Warning', 'Enter Time', Icon(Icons.warning_amber));
       return;
     }

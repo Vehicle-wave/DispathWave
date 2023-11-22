@@ -1,11 +1,14 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:wave_dispatch/res/constants.dart';
 import 'package:wave_dispatch/view/authentication/sign_up/components/input_field.dart';
 import 'package:wave_dispatch/view/load_details/components/load_card_btn.dart';
 import 'package:wave_dispatch/view/load_details/components/load_detail_header.dart';
 import 'package:wave_dispatch/view_model/controller/edit_data_controller.dart';
+
+import '../appeal/appeal.dart';
 
 class EditData extends StatelessWidget {
    EditData({super.key, required this.snapshot});
@@ -30,7 +33,30 @@ class EditData extends StatelessWidget {
                   SizedBox(height: 10,),
                   InputField(hint: 'Drop-of Contact', controller: controller.dropContact),
                   SizedBox(height: 10,),
-                  InputField(hint: 'Time', controller: controller.time),
+                  // InputField(hint: 'Time', controller: controller.time),
+                  GestureDetector(
+                    onTap: ()async{
+
+                      final pickedDate=await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime.now(), lastDate: DateTime(2080),);
+                      if(pickedDate!=null){
+                        final pickedTime=await showTimePicker(context: context, initialTime: TimeOfDay.now());
+                        if(pickedTime!=null){
+                          String formattedDate = DateFormat('dd/MM/yyyy').format(pickedDate);
+                          String formatedTime='${pickedTime.hourOfPeriod}:${pickedTime.minute} ${pickedTime.period.name.toUpperCase()}';
+                          controller.time.value= '$formatedTime  $formattedDate';
+                        }else{
+                          controller.time.value=='';
+                        }
+                      }else{
+                        controller.time.value=='';
+                      }
+
+                    },
+                    child: Obx(() => TimePickDialog(
+                      text: controller.time.value,
+                      hint: 'Select Time',
+                    ),),
+                  ),
                   SizedBox(height: 20,),
                   GestureDetector(
                     onTap: () => controller.updateData(snapshot),

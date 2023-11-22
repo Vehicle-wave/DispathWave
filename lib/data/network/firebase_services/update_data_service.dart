@@ -18,7 +18,7 @@ class UpdateDataService {
       'dropff address' :controller.dropAddress.value.text.toString(),
       'pickup address' :controller.pickupAddress.value.text.toString(),
       'pickup contact' :controller.pickupContact.value.text.toString(),
-      'time' : controller.time.value.text.toString()
+      'time' : controller.time.value
     };
     
    try{
