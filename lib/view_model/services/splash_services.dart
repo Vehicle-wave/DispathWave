@@ -8,7 +8,7 @@ import 'package:wave_dispatch/view/home/home_page.dart';
 class SplashServices {
   static checkLogin(BuildContext context) async {
     SharedPreferences preferences=await SharedPreferences.getInstance();
-    Timer(Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 2), () {
     if(preferences.getString('uid')==null){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUp(),));
     }else{

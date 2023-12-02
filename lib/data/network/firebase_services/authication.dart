@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:wave_dispatch/view/home/home_page.dart';
+import 'package:wave_dispatch/admin/home/home.dart';
 import '../../../utils/utils.dart';
 import '../../../view_model/controller/sign_in_controller.dart';
 import '../../../view_model/controller/sign_up_controller.dart';
 import 'package:firebase_database/firebase_database.dart';
-
 import '../../user_pref/user_pref.dart';
 class FirebaseAuthentication{
   static final auth=FirebaseAuth.instance;
@@ -29,26 +28,26 @@ class FirebaseAuthentication{
           final String email = signUpController.email.value.text.toString();
           FirebaseDatabase.instance
               .ref('Accounts')
-              .child('DriverAccounts')
+              .child('AdminAccounts')
               .child(email.substring(0, email.indexOf('@')))
               .set({
             'email': email,
             'profilePicture': url,
             'fullName': signUpController.fullName.value.text.toString(),
             'uid': value.user!.uid,
-            'type': 'Driver'
+            'type': 'Admin'
           }).then((v) {
             UserPref.saveUser({
               'email': email,
               'profilePicture': url,
               'fullName': signUpController.fullName.value.text.toString(),
               'uid': value.user!.uid,
-              'type': 'Driver'
+              'type': 'Admin'
             });
 
             Utils.showSnackBar('Success', 'Account is successfully Created',
                 const Icon(Icons.done_all));
-            Get.offAll(()=>HomePage());
+            Get.offAll(()=>HomeView());
             signUpController.loading.value = false;
           }).onError((error, stackTrace) {
             signUpController.loading.value = false;
@@ -91,11 +90,11 @@ class FirebaseAuthentication{
 
       FirebaseDatabase.instance
           .ref('Accounts')
-          .child('DriverAccounts')
+          .child('AdminAccounts')
           .child(email.substring(0, email.indexOf('@')))
           .once()
           .then((value) {
-        if(value.snapshot.child('type').value.toString()=='Driver'){
+        if(value.snapshot.child('type').value.toString()=='Admin'){
           final userSnapshot = value.snapshot;
           UserPref.saveUser({
             'fullName': userSnapshot.child('fullName').value.toString(),
@@ -103,12 +102,12 @@ class FirebaseAuthentication{
             'profilePicture':
             userSnapshot.child('profilePicture').value.toString(),
             'uid': userSnapshot.child('uid').value.toString(),
-            'type': userSnapshot.child('Driver').value.toString(),
+            'type': 'Admin',
           });
           Utils.showSnackBar('Success', 'Successfully Login to your account',
               const Icon(Icons.done_all));
           signInController.loading.value = false;
-          Get.offAll(()=>HomePage());
+          Get.offAll(()=>HomeView());
         }else{
           FirebaseAuth.instance.signOut();
           signInController.loading.value = false;

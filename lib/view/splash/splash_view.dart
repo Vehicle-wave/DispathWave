@@ -15,16 +15,12 @@ class SplashView extends StatefulWidget {
 
 
 class _SplashViewState extends State<SplashView> {
-
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     SplashServices.checkLogin(context);
     final controller = Get.put(LoadController());
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

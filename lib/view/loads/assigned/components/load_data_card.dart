@@ -7,9 +7,10 @@ import 'package:wave_dispatch/view_model/controller/load_controller.dart';
 import '../../../../res/constants.dart';
 
 class LoadCardData extends StatelessWidget {
-   LoadCardData({super.key, required this.snapshot});
+   LoadCardData({super.key, required this.snapshot,this.show=true});
   final DataSnapshot snapshot;
   final controller=Get.put(LoadController());
+  final bool show;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -152,7 +153,7 @@ class LoadCardData extends StatelessWidget {
           fontWeight: FontWeight.bold
         ),)),
         const SizedBox(height: 10,),
-        Row(
+       if(show) Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
@@ -189,8 +190,8 @@ class LoadCardData extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 10,),
-        GestureDetector(
+        if(show) SizedBox(height: 10,),
+        if(show) GestureDetector(
           onTap: () => controller.onTapUpdate(snapshot),
           child: Container(
             height: 45,
