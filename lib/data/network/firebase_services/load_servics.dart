@@ -269,6 +269,14 @@ class LoadServices {
         .child(snapshot.key!)
         .set(snapshot.value);
 
+
+    await FirebaseDatabase.instance
+        .ref('Cancelled')
+        .child((await UserPref.getUser())['uid']!)
+        .child(snapshot.key!)
+        .set(snapshot.value);
+
+
     await _updateDatabaseStatus(snapshot, 'Canceled', loadController);
     await snapshot.ref.remove();
 

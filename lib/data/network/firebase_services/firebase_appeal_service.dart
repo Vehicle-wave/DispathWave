@@ -105,8 +105,6 @@ class AppealService {
 
     try{
       final driverRef = FirebaseDatabase.instance.ref('Drivers').child(userUid).child('Requests').child(requestKey);
-
-
       await FirebaseDatabase.instance.ref('Drivers').child(userUid).child('AssignedLoads').child(requestKey).set(
           snapshot.value
       );
@@ -117,6 +115,23 @@ class AppealService {
         'driverUID': userUid,
         'clientUID': uid,
       });
+
+
+
+
+
+      await FirebaseDatabase.instance.ref('Orders').child(userUid).child(requestKey).set(
+          snapshot.value
+      );
+      await FirebaseDatabase.instance.ref('Orders').child(userUid).child(requestKey).update({
+        'requestStatus' : 'Accepted',
+        'status' : 'Loaded',
+        'driverUID': userUid,
+        'clientUID': uid,
+      });
+
+
+
 
 
       await FirebaseDatabase.instance.ref('Shipment').child(uid).child(snapshot.key!).child('AssignedTo').set(
