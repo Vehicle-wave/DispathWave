@@ -38,13 +38,13 @@ class AssignedLoad extends StatelessWidget {
                   color: Colors.white,
                   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Container(
-                    height: 480,
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.white),
-                    child: LoadCardData(snapshot: snapshot)
-                  ),
+                      height: 480,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white),
+                      child: LoadCardData(snapshot: snapshot)),
                 );
               } else {
                 return Text(

@@ -149,7 +149,7 @@ class LoadCardData extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10,),
-        Center(child: Text(snapshot.child('status').value.toString(),style: TextStyle(
+       if(show) Center(child: Text(snapshot.child('status').value.toString(),style: TextStyle(
           fontWeight: FontWeight.bold
         ),)),
         const SizedBox(height: 10,),

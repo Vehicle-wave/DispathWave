@@ -52,8 +52,12 @@ class Drivers extends StatelessWidget {
                               radius:25,
                               backgroundImage: imageProvider,
                             ),
-                              placeholder: (context, url) => SpinKit(
-                                color: primaryColor,
+                              placeholder: (context, url) => SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: SpinKit(
+                                  color: primaryColor,
+                                ),
                               ),
                             ),
                             SizedBox(width: 10,),

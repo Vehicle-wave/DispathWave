@@ -27,17 +27,6 @@ class HomeView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    AdminOptionButton(onTap: () =>Get.to( Users()),text: 'Customers',icon: AppImages.logo,),
-                    AdminOptionButton(onTap: ()=>Get.to( Drivers()),text: 'Drivers',icon: AppImages.logo,),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
                     AdminOptionButton(onTap: () => Get.to(RequestsManage()),text: 'Requests',icon: AppImages.logo,),
                     AdminOptionButton(onTap: () => Get.to(Orders()),text: 'Orders',icon: AppImages.logo,),
                   ],
@@ -51,6 +40,17 @@ class HomeView extends StatelessWidget {
                   children: [
                     AdminOptionButton(onTap: () => Get.to(Cancellations()),text: 'Cancellations',icon: AppImages.logo,),
                     AdminOptionButton(onTap: () => Get.to(Payments()),text: 'Payments',icon: AppImages.logo,),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    AdminOptionButton(onTap: () =>Get.to( Users()),text: 'Customers',icon: AppImages.logo,),
+                    AdminOptionButton(onTap: ()=>Get.to( Drivers()),text: 'Drivers',icon: AppImages.logo,),
                   ],
                 ),
               ),
