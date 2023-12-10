@@ -47,7 +47,6 @@ class HomeView extends StatelessWidget {
             query: FirebaseDatabase.instance.ref('Shipment'),
             padding: const EdgeInsets.symmetric(vertical: 10),
             itemBuilder: (context, snapshot, animation, index) {
-
             return ListView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

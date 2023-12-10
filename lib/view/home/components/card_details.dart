@@ -98,6 +98,12 @@ class HomeCardDetails extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text('\$${dataSnapshot.child('Price').value.toString()}',style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                          color: primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          height: 0
+                      ),),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -116,12 +122,7 @@ class HomeCardDetails extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Text('\$${dataSnapshot.child('Price').value.toString()}',style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                              color: primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              height: 0
-                          ),)
+
                         ],
                       ),
                       Container(height: 20,
