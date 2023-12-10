@@ -139,6 +139,12 @@ class AppealService {
       await FirebaseDatabase.instance.ref('Shipment').child(uid).child(snapshot.key!).child('AssignedTo').update({
         'status' : 'dispatched',
       });
+
+      await FirebaseDatabase.instance.ref('Shipment').child(uid).child(snapshot.key!).update({
+        'status' : 'dispatched',
+      });
+
+
       /// request accepted status change is request list of driver
       driverRef.update({
         'requestStatus' : 'Accepted',
