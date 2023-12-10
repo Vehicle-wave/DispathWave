@@ -277,6 +277,17 @@ class AdminLoadCardData extends StatelessWidget {
         .update({'requestStatus': status});
 
 
+    await FirebaseDatabase.instance
+        .ref('Shipment')
+        .child(snapshot.child('clientUID').value.toString())
+        .child(snapshot.key!).child('AssignedTo')
+        .set(snapshot.child('AppealData').value);
+
+
+
+
+
+
     Utils.showSnackBar('Request', 'Your request is updated', Icon(Icons.done_all));
 
   }

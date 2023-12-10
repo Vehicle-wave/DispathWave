@@ -43,7 +43,7 @@ class Users extends StatelessWidget {
                         child: Container(
                             height: 350,
                             padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                            const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 color: Colors.white),

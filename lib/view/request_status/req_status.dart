@@ -15,7 +15,7 @@ class RequestStatus extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            LoadDetailHeader(text: 'Approval',),
+            const LoadDetailHeader(text: 'Approval',),
             Expanded(child: status=='Accepted'? Approved(dataSnapshot: snapshot,) : status=='Rejected'? Rejected() :status=='Pending'?Pending() :Pending()  )
           ],
         ),

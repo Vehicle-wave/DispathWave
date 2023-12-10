@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wave_dispatch/admin/home/home.dart';
 import 'package:wave_dispatch/view/authentication/sign_up/sign_up.dart';
 import 'package:wave_dispatch/view/home/home_page.dart';
 
@@ -12,7 +13,7 @@ class SplashServices {
     if(preferences.getString('uid')==null){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUp(),));
     }else{
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(),));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeView(),));
     }
     });
   }
