@@ -113,7 +113,7 @@ class AppealService {
 
       await FirebaseDatabase.instance.ref('Drivers').child(userUid).child('AssignedLoads').child(requestKey).update({
         'requestStatus' : 'Accepted',
-        'status' : 'Loaded',
+        'status' : 'dispatched',
         'driverUID': userUid,
         'clientUID': uid,
       });
@@ -124,7 +124,7 @@ class AppealService {
       );
       await FirebaseDatabase.instance.ref('Orders').child(userUid).child(requestKey).update({
         'requestStatus' : 'Accepted',
-        'status' : 'Loaded',
+        'status' : 'dispatched',
         'driverUID': userUid,
         'clientUID': uid,
       });
@@ -137,7 +137,7 @@ class AppealService {
         snapshot.child('AppealData').value,
       );
       await FirebaseDatabase.instance.ref('Shipment').child(uid).child(snapshot.key!).child('AssignedTo').update({
-        'status' : 'Loaded',
+        'status' : 'dispatched',
       });
       /// request accepted status change is request list of driver
       driverRef.update({
